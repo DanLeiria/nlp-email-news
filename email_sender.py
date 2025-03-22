@@ -3,7 +3,9 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 
-def send_email(message, host, username, password, receiver):
+def send_email(
+    message: str, subject: str, host: str, username: str, password: str, receiver: str
+):
     # Inputs
     PORT = 465
     CONTEXT = ssl.create_default_context()
@@ -12,7 +14,7 @@ def send_email(message, host, username, password, receiver):
     msg = MIMEMultipart()
     msg["From"] = username
     msg["To"] = receiver
-    msg["Subject"] = "Daily Debrief"
+    msg["Subject"] = subject
 
     # Attach the message body, specifying 'plain' text and UTF-8 encoding
     msg.attach(MIMEText(message, "plain", "utf-8"))

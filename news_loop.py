@@ -10,7 +10,7 @@ print(result.output)  # "POS" => Positive
 print(result.probas)  # Probabilities for POS, NEG, NEU
 
 
-def vibe_score(news_title, news_description):
+def vibe_score(news_title: str, news_description: str):
     # NLP sentiment analysis
     analyser_en = SentimentIntensityAnalyzer()
     analyser_pt = create_analyzer(task="sentiment", lang="pt")
@@ -31,12 +31,12 @@ def vibe_score(news_title, news_description):
     return vibe
 
 
-def news_loop(content, content_type, news_limit):
+def news_loop(content: dict, lang: str, news_limit: int):
     """
     INPUT:
-        - content: API news (json)
-        - content_type: only 'country' or 'job' or 'headlines' (string)
-        - news_limit: maximum number of news output
+        - content: API news (dict)
+        - lang: only 'en' or 'pt' (string)
+        - news_limit: maximum number of news output (int)
     OUTPUT:
         - News list as a string.
     DESCRIPTION:
@@ -60,7 +60,7 @@ def news_loop(content, content_type, news_limit):
             news_description = article["description"]
             news_source = article["url"]
 
-            if content_type == "country":
+            if lang == "pt":
                 # Condition not brazilian
                 if (
                     news_title is not None
@@ -70,7 +70,7 @@ def news_loop(content, content_type, news_limit):
                     # News displayed in the email
                     news_total += f"{i}. {news_title} ({news_source})" + "\n"
                     i += 1
-            elif content_type == "job" or content_type == "headlines":
+            elif lang == "en":
                 # Condition of job
                 if news_title is not None and i <= news_limit:
                     # News displayed in the email
