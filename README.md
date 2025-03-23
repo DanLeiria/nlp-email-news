@@ -45,7 +45,7 @@ Scheduled via [PythonAnywhere](https://www.pythonanywhere.com/) (or your preferr
 This project has the following directory structure and the next sections attempt to explain them.
 
 ```
-nlp-email_sender
+nlp-email_news
 |   .env
 |   .gitignore
 |   config.yaml
@@ -67,8 +67,8 @@ nlp-email_sender
 ### 1. Clone the Repository
 
 ```
-git clone https://github.com/DanLeiria/<REPO_NAME>.git
-cd <REPO_NAME>
+git clone https://github.com/DanLeiria/nlp-email-news.git
+cd nlp-email-news
 ```
 
 ### 2. Create a Virtual Environment (optional but recommended)
@@ -101,3 +101,6 @@ Adjust your time zone or scheduling preferences as needed.
 ## License
 This project is licensed under the MIT License - feel free to modify and distribute as you see fit.
 
+## Example of the email
+
+![alt text](image.png)
