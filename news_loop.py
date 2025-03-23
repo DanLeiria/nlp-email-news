@@ -1,34 +1,4 @@
-from nltk.sentiment import SentimentIntensityAnalyzer
-from pysentimiento import create_analyzer
-
-
-# Create a sentiment analyzer for Portuguese
-analyser_pt = create_analyzer(task="sentiment", lang="pt")
-# Analyze a sentence
-result = analyser_pt.predict("Este produto é neutro!")
-print(result.output)  # "POS" => Positive
-print(result.probas)  # Probabilities for POS, NEG, NEU
-
-
-def vibe_score(news_title: str, news_description: str):
-    # NLP sentiment analysis
-    analyser_en = SentimentIntensityAnalyzer()
-    analyser_pt = create_analyzer(task="sentiment", lang="pt")
-
-    # Add text together
-    news_text = f"{news_title}: {news_description}" + "\n"
-
-    # Calculate the polarity scores
-    analysis_output = analyser_en.polarity_scores(news_text)
-
-    # Define the news sentiment
-    if analysis_output["compound"] > 0.05:
-        vibe = "🟢"
-    elif analysis_output["compound"] < -0.05:
-        vibe = "🔴"
-    else:
-        vibe = "🟡"
-    return vibe
+from sentiment_analysis import vibe_score_en, vibe_score_pt
 
 
 def news_loop(content: dict, lang: str, news_limit: int):
@@ -68,7 +38,13 @@ def news_loop(content: dict, lang: str, news_limit: int):
                     and i <= news_limit
                 ):
                     # News displayed in the email
-                    news_total += f"{i}. {news_title} ({news_source})" + "\n"
+                    news_total_i = f"{i}. {news_title} ({news_source})" + "\n"
+
+                    # Sentiment analysis
+                    vibe = vibe_score_pt(news_title, news_description)
+
+                    # Final outcome
+                    news_total += f"{vibe} {news_total_i}"
                     i += 1
             elif lang == "en":
                 # Condition of job
@@ -77,7 +53,7 @@ def news_loop(content: dict, lang: str, news_limit: int):
                     news_total_i = f"{i}. {news_title} ({news_source})" + "\n"
 
                     # Sentiment analysis
-                    vibe = vibe_score(news_title, news_description)
+                    vibe = vibe_score_en(news_title, news_description)
 
                     # Final outcome
                     news_total += f"{vibe} {news_total_i}"
