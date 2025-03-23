@@ -27,6 +27,7 @@ Fetches the latest APOD image or video (with a brief explanation).
 Sends a daily email at 8:00 AM containing:
 - All gathered news with sentiment analysis
 - NASA’s APOD (embedded or linked)
+
 Scheduled via [PythonAnywhere](https://www.pythonanywhere.com/) (or your preferred hosting/scheduling solution).
 
 ## Project Overview
