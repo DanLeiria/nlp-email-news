@@ -1,5 +1,5 @@
 from nltk.sentiment import SentimentIntensityAnalyzer
-from pysentimiento import create_analyzer
+# from pysentimiento import create_analyzer
 
 
 def vibe_score_en(news_title: str, news_description: str):
@@ -22,21 +22,23 @@ def vibe_score_en(news_title: str, news_description: str):
     return vibe
 
 
-def vibe_score_pt(news_title: str, news_description: str):
-    # NLP sentiment analysis
-    analyser_pt = create_analyzer(task="sentiment", lang="pt")
+### Removed because it is too heavy in the server
 
-    # Add text together
-    news_text = f"{news_title}: {news_description}"
+# def vibe_score_pt(news_title: str, news_description: str):
+#     # NLP sentiment analysis
+#     analyser_pt = create_analyzer(task="sentiment", lang="pt")
 
-    # Calculate the polarity scores
-    result = analyser_pt.predict(news_text)
+#     # Add text together
+#     news_text = f"{news_title}: {news_description}"
 
-    # Define the news sentiment
-    if result.output == "POS":
-        vibe = "🟢"
-    elif result.output == "NEG":
-        vibe = "🔴"
-    else:
-        vibe = "🟡"
-    return vibe
+#     # Calculate the polarity scores
+#     result = analyser_pt.predict(news_text)
+
+#     # Define the news sentiment
+#     if result.output == "POS":
+#         vibe = "🟢"
+#     elif result.output == "NEG":
+#         vibe = "🔴"
+#     else:
+#         vibe = "🟡"
+#     return vibe
