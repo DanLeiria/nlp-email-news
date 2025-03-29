@@ -9,4 +9,5 @@ NEWS_LIMIT_1: 15 # Maximum number of news
 NEWS_QUERY_2: "Danfoss"
 NEWS_LANG_2: "en"  # Language
 NEWS_LIMIT_2: 10
+NEWS_LANG_3: "en"  # Language
 NEWS_LIMIT_3: 10

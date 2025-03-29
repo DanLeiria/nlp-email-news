@@ -99,17 +99,21 @@ content_headlines = api_request_3.json()
 
 # News: Country
 news_country_total = news_loop(
-    content=content_country, lang="pt", news_limit=config["NEWS_LIMIT_1"]
+    content=content_country,
+    lang=config["NEWS_LANG_1"],
+    news_limit=config["NEWS_LIMIT_1"],
 )
 
 # News: Job
 news_job_total = news_loop(
-    content=content_job, lang="en", news_limit=config["NEWS_LIMIT_2"]
+    content=content_job, lang=config["NEWS_LANG_2"], news_limit=config["NEWS_LIMIT_2"]
 )
 
 # News: Headlines
 news_headline_total = news_loop(
-    content=content_headlines, lang="en", news_limit=config["NEWS_LIMIT_3"]
+    content=content_headlines,
+    lang=config["NEWS_LANG_3"],
+    news_limit=config["NEWS_LIMIT_3"],
 )
 
 
