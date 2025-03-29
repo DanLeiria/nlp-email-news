@@ -9,7 +9,7 @@ A Python project that fetches the latest news, performs sentiment analysis, retr
 - Portugal news (in Portuguese)
 - Company-specific (job) news (in English)
 
-**Date Range:** Pulls news from yesterday to today at 7:30 AM.
+**Date Range:** Pulls news from yesterday to today at the time the script runs.
 
 ### 2. Sentiment Analysis (NLP)
 
