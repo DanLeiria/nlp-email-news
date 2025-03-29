@@ -97,7 +97,7 @@ NASA_API_KEY = "..." # Replace with the your (individual) NASA API key
 
 PASSWORD = "..." # Replace with the your (individual) Gmail app password (NOT YOUR EMAIL PASSWORD - See more in note below)
 HOST = "smtp.gmail.com" # If you use gmail like me, if not look on the internet what to add here
-USERNAME = "..." # Replace with your email here
+USERNAME_EMAIL = "..." # Replace with your email here
 RECEIVER = "..." # Replace with your email here
 ```
 
@@ -111,11 +111,11 @@ EMAIL_SUBJECT: "..." # Replace with the subject you want in the email
 NEWS_SORT: "relevancy" # Keep this, organizes the news according to their relevancy
 NEWS_QUERY_1: "Portugal" # Replace with the country you want to get news from
 NEWS_LANG_1: "pt"  # Language of the news of query 1
-NEWS_LIMIT_1: 20 # Maximum number of news of query 1
-NEWS_QUERY_2: "Danfoss" # Replace with the other subject you want to get news from (this case - job)
+NEWS_LIMIT_1: 15 # Maximum number of news of query 1
+NEWS_QUERY_2: "Danfoss" # Replace with the other subject you want to get news from (this case - my job)
 NEWS_LANG_2: "en"  # Language of the news of query 2
-NEWS_LIMIT_2: 15 # Maximum number of news of query 2
-NEWS_LIMIT_3: 15 # Maximum number of news of query 3
+NEWS_LIMIT_2: 10 # Maximum number of news of query 2
+NEWS_LIMIT_3: 10 # Maximum number of news of query 3
 ```
 
 
@@ -129,6 +129,10 @@ In [PythonAnywhere](https://www.pythonanywhere.com/), go to the “Tasks” or �
 Set the script to run daily at 8:00 AM local time.
 Adjust your time zone or scheduling preferences as needed.
 Remember to add all code and files into the website and install it using Bash.
+
+In **PythonAnywhere**, it might be tricky to run it at the beginning.
+In main.py there are a few comments that are marked to comment or uncomment accordingly when adding it in the website.
+
 
 ## License
 This project is licensed under the MIT License - feel free to modify and distribute as you see fit.
