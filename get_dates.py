@@ -2,6 +2,10 @@ import datetime
 
 
 def get_news_time_range():
+    """
+    Get today's date (when the script runs)
+    Get yesterday's date
+    """
     # Get today’s date
     today = datetime.datetime.today()
     # print(today)
@@ -17,4 +21,5 @@ def get_news_time_range():
 
 
 if __name__ == "__main__":
+    """ Just for validation of the script """
     print(get_news_time_range())
