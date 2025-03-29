@@ -1,14 +1,19 @@
-import requests
+import requests  # Import APIs
 
 
 def get_nasa_apod(api_key: str):
     """
     Fetch the NASA Astronomy Picture of the Day (APOD) data.
     """
+
     url = "https://api.nasa.gov/planetary/apod"
     params = {"api_key": api_key, "hd": True}
     response = requests.get(url, params=params)
-    response.raise_for_status()
+
+    # Check response (logs)
+    if response.status_code != 200:
+        print("[INFO] NASA API request failed.")
+
     result = response.json()
 
     title = result["title"]

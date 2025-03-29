@@ -5,8 +5,8 @@ EMAIL_SUBJECT: "Daily Debrief"
 NEWS_SORT: "relevancy"
 NEWS_QUERY_1: "Portugal"
 NEWS_LANG_1: "pt"  # Language
-NEWS_LIMIT_1: 20 # Maximum number of news
+NEWS_LIMIT_1: 15 # Maximum number of news
 NEWS_QUERY_2: "Danfoss"
 NEWS_LANG_2: "en"  # Language
-NEWS_LIMIT_2: 15
-NEWS_LIMIT_3: 15
+NEWS_LIMIT_2: 10
+NEWS_LIMIT_3: 10

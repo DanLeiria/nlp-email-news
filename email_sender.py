@@ -10,18 +10,21 @@ def send_email(
     username: str,
     password: str,
     receiver: str,
-    nasa_apod: bytes,  # <-- Must be raw bytes of the image
+    nasa_apod: bytes,
 ):
     """
     Sends an email using EmailMessage with a plain-text body and one image attachment.
 
-    :param message: The plain-text message body.
-    :param subject: The subject of the email.
-    :param host: SMTP server host (e.g. 'smtp.gmail.com').
-    :param username: Email account username.
-    :param password: Email account password.
-    :param receiver: Recipient email address.
-    :param nasa_apod: Raw bytes of the image to attach (e.g. requests.get(url).content).
+    Parameters:
+        - message: The plain-text message body.
+        - subject: The subject of the email.
+        - host: SMTP server host (e.g. 'smtp.gmail.com').
+        - username: Email account username.
+        - password: Email account password.
+        - receiver: Recipient email address.
+        - nasa_apod: Raw bytes of the image to attach (e.g. requests.get(url).content).
+    Output:
+        - Email sent
     """
     PORT = 465
     CONTEXT = ssl.create_default_context()

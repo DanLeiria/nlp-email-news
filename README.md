@@ -8,11 +8,13 @@ A Python project that fetches the latest news, performs sentiment analysis, retr
 - US headlines (in English)
 - Portugal news (in Portuguese)
 - Company-specific (job) news (in English)
-Date Range: Pulls news from yesterday to today at 7:30 AM.
+
+**Date Range:** Pulls news from yesterday to today at 7:30 AM.
 
 ### 2. Sentiment Analysis (NLP)
 
 Assesses each piece of news as negative, neutral, or positive.
+
 The result is a color-coded representation:
 - 🔴 Red → Negative
 - 🟡 Yellow → Neutral
@@ -74,11 +76,10 @@ cd nlp-email-news
 
 ### 2. Create a Virtual Environment (optional but recommended)
 
+Run in bash the following:
 ```
 python -m venv venv
-source venv/bin/activate  # Linux/Mac
-# or
-venv\Scripts\activate     # Windows
+source venv\bin\activate
 ```
 
 ### 3. Install Dependencies
@@ -87,17 +88,47 @@ pip install -r requirements.txt
 ```
 
 ### 4. Configure Environment Variables
-You’ll need API keys for the News API and NASA. Create environment variables (``.env``) and a config file (``config.yaml``) to store:
+You’ll need API keys for the News API and NASA. Create an environment file (``.env``) and a config file (``config.yaml``) inside your main folder to store your settings and passwords:
 
-In the ``.env`` add the following variables: NEWS_API_KEY, NASA_API_KEY, SMTP_HOST, SMTP_PASSWORD, RECIPIENT_EMAIL, USERNAME_EMAIL
+In the ``.env`` file, add the code below and replace all `...` with your personal details:
+```
+NEWS_API_KEY = "..." # Replace with the your (individual) News API key
+NASA_API_KEY = "..." # Replace with the your (individual) NASA API key
 
-In the ``config.yaml`` add the following variables: EMAIL_SUBJECT, NEWS_SORT, NEWS_QUERY, NEWS_LANG_1, NEWS_LIMIT.
+PASSWORD = "..." # Replace with the your (individual) Gmail app password (NOT YOUR EMAIL PASSWORD - See more in note below)
+HOST = "smtp.gmail.com" # If you use gmail like me, if not look on the internet what to add here
+USERNAME = "..." # Replace with your email here
+RECEIVER = "..." # Replace with your email here
+```
+
+
+In the ``config.yaml`` file, add the code below and replace all `...` with your personal details:
+```
+# Email parameters
+EMAIL_SUBJECT: "..." # Replace with the subject you want in the email
+
+# News parameters
+NEWS_SORT: "relevancy" # Keep this, organizes the news according to their relevancy
+NEWS_QUERY_1: "Portugal" # Replace with the country you want to get news from
+NEWS_LANG_1: "pt"  # Language of the news of query 1
+NEWS_LIMIT_1: 20 # Maximum number of news of query 1
+NEWS_QUERY_2: "Danfoss" # Replace with the other subject you want to get news from (this case - job)
+NEWS_LANG_2: "en"  # Language of the news of query 2
+NEWS_LIMIT_2: 15 # Maximum number of news of query 2
+NEWS_LIMIT_3: 15 # Maximum number of news of query 3
+```
+
+
+**Note:** To create gmail password, see here: https://www.febooti.com/products/automation-workshop/tutorials/enable-google-app-passwords-for-smtp.html
+
+**Note:** Do not share ``.env`` with no one - neither push it to your GitHub. Add it to the file ``.gitignore`` before any commit.
 
 ### 5. Schedule the Script
 
-In PythonAnywhere, go to the “Tasks” or “Schedule” section.
+In [PythonAnywhere](https://www.pythonanywhere.com/), go to the “Tasks” or “Schedule” section.
 Set the script to run daily at 8:00 AM local time.
 Adjust your time zone or scheduling preferences as needed.
+Remember to add all code and files into the website and install it using Bash.
 
 ## License
 This project is licensed under the MIT License - feel free to modify and distribute as you see fit.

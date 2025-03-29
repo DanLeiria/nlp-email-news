@@ -1,15 +1,10 @@
-from sentiment_analysis import vibe_score_en, vibe_score_pt
+from sentiment_analysis import vibe_score_en
+# Removed the portuguese analyser because of the server
+# , vibe_score_pt
 
 
 def news_loop(content: dict, lang: str, news_limit: int):
     """
-    INPUT:
-        - content: API news (dict)
-        - lang: only 'en' or 'pt' (string)
-        - news_limit: maximum number of news output (int)
-    OUTPUT:
-        - News list as a string.
-    DESCRIPTION:
     Loop through the news extracted.
     In the loop:
         - Add news title and link source to send by email.
@@ -17,6 +12,13 @@ def news_loop(content: dict, lang: str, news_limit: int):
         - Filter number of news according to given limit.
         - Sentiment analysis of the title and description.
         - Sentiment score is added to email text as color emoji.
+
+    Parameters:
+        - content: API news (dict)
+        - lang: only 'en' or 'pt' (string)
+        - news_limit: maximum number of news output (int)
+    Output:
+        - News list as a string.
     """
     # Starting point
     news_total = ""
@@ -41,7 +43,8 @@ def news_loop(content: dict, lang: str, news_limit: int):
                     news_total_i = f"{i}. {news_title} ({news_source})" + "\n"
 
                     # Sentiment analysis
-                    vibe = vibe_score_pt(news_title, news_description)
+                    # vibe = vibe_score_pt(news_title, news_description)
+                    vibe = "⚪"
 
                     # Final outcome
                     news_total += f"{vibe} {news_total_i}"

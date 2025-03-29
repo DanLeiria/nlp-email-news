@@ -1,10 +1,27 @@
+import nltk
 from nltk.sentiment import SentimentIntensityAnalyzer
 # from pysentimiento import create_analyzer
 
+try:
+    nltk.data.find("sentiment/vader_lexicon.zip")
+except LookupError:
+    nltk.download("vader_lexicon")
+
+# NLP sentiment analysis - Only call it once
+analyser_en = SentimentIntensityAnalyzer()
+
 
 def vibe_score_en(news_title: str, news_description: str):
-    # NLP sentiment analysis
-    analyser_en = SentimentIntensityAnalyzer()
+    """
+    Sentiment analysis the english text (both title and description) using
+    the package nltk.
+
+    Parameters:
+        - news_title (str): Title news
+        - news_description (str): Descriptive text of the news
+    Output:
+        - Sentiment score as an emojis
+    """
 
     # Add text together
     news_text = f"{news_title}: {news_description}"
@@ -23,7 +40,6 @@ def vibe_score_en(news_title: str, news_description: str):
 
 
 ### Removed because it is too heavy in the server
-
 # def vibe_score_pt(news_title: str, news_description: str):
 #     # NLP sentiment analysis
 #     analyser_pt = create_analyzer(task="sentiment", lang="pt")
