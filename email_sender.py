@@ -10,7 +10,7 @@ def send_email(
     username: str,
     password: str,
     receiver: str,
-    nasa_apod: bytes,
+    nasa_apod,
 ):
     """
     Sends an email using EmailMessage with a plain-text body and one image attachment.
@@ -35,17 +35,20 @@ def send_email(
     msg["To"] = receiver
     msg["Subject"] = subject
 
-    # Set the plain-text content
-    msg.set_content(message)
-
     # Attach the image (APOD) as bytes
     # Make sure nasa_apod contains the raw image bytes
-    msg.add_attachment(
-        nasa_apod,
-        maintype="image",
-        subtype="jpeg",  # or 'png', depending on actual format
-        filename="apod.jpg",
-    )
+    if nasa_apod is bytes:
+        msg.add_attachment(
+            nasa_apod,
+            maintype="image",
+            subtype="jpeg",  # or 'png', depending on actual format
+            filename="apod.jpg",
+        )
+        # Set the plain-text content
+        msg.set_content(message)
+    else:
+        # Set the plain-text content
+        msg.set_content(f"{message} \n NASA video: {nasa_apod}")
 
     # Connect to SMTP server and send
     with smtplib.SMTP_SSL(host, PORT, context=CONTEXT) as server:

@@ -10,8 +10,8 @@ def get_news_time_range():
     today = datetime.datetime.today()
     # print(today)
 
-    # Create datetime objects for today and yesterday date and time
-    yesterday = today - datetime.timedelta(days=1)
+    # Create datetime objects for today and 2-days ago date
+    yesterday = today - datetime.timedelta(days=2)
 
     # Convert to strings in ISO format (YYYY-MM-DD)
     news_time_from = yesterday.strftime("%Y-%m-%d")
