@@ -20,13 +20,11 @@ def get_nasa_apod(api_key: str):
     date = result["date"]
     explanation = result["explanation"]
     media_type = result["media_type"]
-    hd_url = result["hdurl"]  # HD image if available
     url = result["url"]  # Fallback image or video link
 
     if media_type == "image":
         # Download the image content
-        image_url = hd_url if hd_url else url  # prefer HD if available
-        img_response = requests.get(image_url)
+        img_response = requests.get(url)
         img_response.raise_for_status()
         # Get image
         img_data_uri = img_response.content
@@ -34,4 +32,13 @@ def get_nasa_apod(api_key: str):
         # Typically a YouTube or Vimeo link
         img_data_uri = f"See here: {url}"
 
-    return f"{title} ({date}) \n {explanation} \n", img_data_uri
+    return f"{title} ({date}) - {media_type} \n {explanation} \n", img_data_uri
+
+
+if __name__ == "__main__":
+    import os
+
+    NASA_API_KEY = os.getenv("NASA_API_KEY")
+    apod_text, apod = get_nasa_apod(api_key=NASA_API_KEY)
+    print(apod_text)
+    print(apod)
