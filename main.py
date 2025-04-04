@@ -126,7 +126,7 @@ Extracted NASA APOD using NASA API and the script nasa_apod_request.py
 
 NASA_API_KEY = os.getenv("NASA_API_KEY")
 
-apod_text, apod = get_nasa_apod(api_key=NASA_API_KEY)
+apod_text, media_type, apod = get_nasa_apod(api_key=NASA_API_KEY)
 
 
 ###################################################################################
@@ -141,12 +141,12 @@ Send the email using the script email_sender.py
 final_message = (
     "Headlines: \n"
     + news_headline_total
-    + "\n NASA - APOD:"
-    + apod_text
     + "\n Country news: \n"
     + news_country_total
     + "\n Company news: \n"
     + news_job_total
+    + "\n NASA - APOD: "
+    + apod_text
 )
 
 # Get the personal email credentials
@@ -161,6 +161,7 @@ if not all([EMAIL_HOST, EMAIL_USERNAME, EMAIL_RECEIVER, EMAIL_PASSWORD]):
 # Send email
 send_email(
     message=final_message,
+    media_type=media_type,
     subject=config["EMAIL_SUBJECT"],
     host=EMAIL_HOST,
     username=EMAIL_USERNAME,

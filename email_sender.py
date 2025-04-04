@@ -5,6 +5,7 @@ from email.message import EmailMessage
 
 def send_email(
     message: str,
+    media_type: str,
     subject: str,
     host: str,
     username: str,
@@ -37,15 +38,18 @@ def send_email(
 
     # Attach the image (APOD) as bytes
     # Make sure nasa_apod contains the raw image bytes
-    if nasa_apod is bytes:
+    if media_type == "image":
+        # Set the plain-text content
+        msg.set_content(message)
+
+        # Attach to the message the image
         msg.add_attachment(
             nasa_apod,
             maintype="image",
             subtype="jpeg",  # or 'png', depending on actual format
             filename="apod.jpg",
         )
-        # Set the plain-text content
-        msg.set_content(message)
+
     else:
         # Set the plain-text content
         msg.set_content(f"{message} \n NASA video: {nasa_apod}")

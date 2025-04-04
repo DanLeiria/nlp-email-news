@@ -32,13 +32,18 @@ def get_nasa_apod(api_key: str):
         # Typically a YouTube or Vimeo link
         img_data_uri = f"See here: {url}"
 
-    return f"{title} ({date}) - {media_type} \n {explanation} \n", img_data_uri
+    return (
+        f"{title} ({date}) - {media_type} \n {explanation} \n",
+        media_type,
+        img_data_uri,
+    )
 
 
 if __name__ == "__main__":
     import os
 
     NASA_API_KEY = os.getenv("NASA_API_KEY")
-    apod_text, apod = get_nasa_apod(api_key=NASA_API_KEY)
+    apod_text, media_type, apod = get_nasa_apod(api_key=NASA_API_KEY)
     print(apod_text)
-    print(apod)
+    print(media_type)
+    # print(apod)
