@@ -1,0 +1,9 @@
+# 📝 TODO List
+
+## 🚧 DAILY BRIEF
+
+### Memento mori functionality
+- [x] Parse birthday input from string to datetime
+- [ ] Add error handling for invalid dates
+- [ ] Write unit tests for edge cases (e.g., leap years)
+- [ ] Push it to GitHub and to Python server
