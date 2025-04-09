@@ -34,6 +34,11 @@ Sends a daily email at 8:00 AM containing:
 
 Scheduled via [PythonAnywhere](https://www.pythonanywhere.com/) (or your preferred hosting/scheduling solution).
 
+### 5. Life tracker (Memento Mori)
+
+It calculates the remaining life that the user has as a percentage.
+It is necessary that the user adds his birthday and expected years the he/she believes they will live.
+
 ## Project Overview
 
 **APIs Used:**
@@ -62,6 +67,7 @@ nlp-email_news
 |   README.md
 |   requirements.txt
 |   sentiment_analysis.py
+|   memento_mori.py
 |   
 +---venv
 \---__pycache__
@@ -101,6 +107,9 @@ PASSWORD = "..." # Replace with the your (individual) Gmail app password (NOT YO
 HOST = "smtp.gmail.com" # If you use gmail like me, if not look on the internet what to add here
 USERNAME_EMAIL = "..." # Replace with your email here
 RECEIVER = "..." # Replace with your email here
+
+EXPECTED_YEARS = "80" # Replace with the number of years that you believe you will leave
+BIRTHDAY = "19/02/1997" # Replace with your birthday date (format: dd/mm/yyyy)
 ```
 
 

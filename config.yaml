@@ -1,5 +1,5 @@
 # Email parameters
-EMAIL_SUBJECT: "Daily Debrief"
+EMAIL_SUBJECT: "Morning Debrief"
 
 # News parameters
 NEWS_SORT: "relevancy"

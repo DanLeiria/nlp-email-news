@@ -18,6 +18,7 @@ from email_sender import send_email  # Load function in the script
 from news_loop import news_loop  # Load function in the script
 from nasa_apod_request import get_nasa_apod  # Load function in the script
 from get_dates import get_news_time_range  # Load function in the script
+from memento_mori import life_tracker  # Load function in the script
 
 # Load variables from .env (secret credentials)
 """ Uncomment the line below if using PythonAnywhere """
@@ -130,6 +131,17 @@ apod_text, media_type, apod = get_nasa_apod(api_key=NASA_API_KEY)
 
 
 ###################################################################################
+### -----                        LIFE TRACKER                             ----- ###
+###################################################################################
+""" Calculate remaining life time to add into the email subject """
+
+USER_BIRTHDATE = os.getenv("BIRTHDAY")
+USER_EXPECT_LIFE = int(os.getenv("EXPECTED_YEARS"))
+
+life_user = life_tracker(birthday_date=USER_BIRTHDATE, expect_years=USER_EXPECT_LIFE)
+
+
+###################################################################################
 ### -----                         SEND EMAIL                              ----- ###
 ###################################################################################
 """
@@ -155,6 +167,9 @@ EMAIL_USERNAME = os.getenv("USERNAME_EMAIL")
 EMAIL_RECEIVER = os.getenv("RECEIVER")
 EMAIL_PASSWORD = os.getenv("PASSWORD")
 
+# Write email subject
+EMAIL_SUBJECT = f"{config['EMAIL_SUBJECT']} - {life_user}"
+
 if not all([EMAIL_HOST, EMAIL_USERNAME, EMAIL_RECEIVER, EMAIL_PASSWORD]):
     raise ValueError("EMAIL - Credentials missing.")  # Logs
 
@@ -162,7 +177,7 @@ if not all([EMAIL_HOST, EMAIL_USERNAME, EMAIL_RECEIVER, EMAIL_PASSWORD]):
 send_email(
     message=final_message,
     media_type=media_type,
-    subject=config["EMAIL_SUBJECT"],
+    subject=EMAIL_SUBJECT,
     host=EMAIL_HOST,
     username=EMAIL_USERNAME,
     password=EMAIL_PASSWORD,

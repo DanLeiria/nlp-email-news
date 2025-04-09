@@ -29,7 +29,7 @@ def life_tracker(birthday_date: str, expect_years: int):
     # Calculate percentage of remaining life
     pct_life = (total_diff - current_diff) / total_diff * 100
 
-    return f"{pct_life:.0f}% life remaining"
+    return f"{pct_life:.0f}% remaining"
 
 
 if __name__ == "__main__":
